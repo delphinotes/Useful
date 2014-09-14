@@ -1,73 +1,56 @@
 ﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 		<PropertyGroup>
-			<ProjectGuid>{7B02F08C-37BD-4CBB-9EF7-54B04DFDD89D}</ProjectGuid>
-			<ProjectVersion>16.0</ProjectVersion>
-			<FrameworkType>VCL</FrameworkType>
+			<ProjectGuid>{0DD00C27-C424-4870-99F7-F39B4177F957}</ProjectGuid>
 			<MainSource>MsgHelperDemo.dpr</MainSource>
-			<Base>True</Base>
 			<Config Condition="'$(Config)'==''">Debug</Config>
-			<Platform Condition="'$(Platform)'==''">Win32</Platform>
-			<TargetedPlatforms>1</TargetedPlatforms>
-			<AppType>Application</AppType>
 			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+			<ProjectVersion>12.0</ProjectVersion>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
 			<Base>true</Base>
 		</PropertyGroup>
-		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
 			<Cfg_1>true</Cfg_1>
 			<CfgParent>Base</CfgParent>
 			<Base>true</Base>
 		</PropertyGroup>
-		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
 			<Cfg_2>true</Cfg_2>
 			<CfgParent>Base</CfgParent>
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
-			<DCC_DependencyCheckOutputName>bin\MsgHelperDemo.exe</DCC_DependencyCheckOutputName>
-			<DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-			<Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
-			<SanitizedProjectName>MsgHelperDemo</SanitizedProjectName>
-			<DCC_DcuOutput>.\bin</DCC_DcuOutput>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;$(DCC_UnitAlias)</DCC_UnitAlias>
 			<DCC_ExeOutput>.\bin</DCC_ExeOutput>
-			<DCC_E>false</DCC_E>
-			<DCC_N>false</DCC_N>
-			<DCC_S>false</DCC_S>
-			<DCC_F>false</DCC_F>
-			<DCC_K>false</DCC_K>
+			<DCC_DcuOutput>.\bin</DCC_DcuOutput>
+			<DCC_DependencyCheckOutputName>bin\MsgHelperDemo.exe</DCC_DependencyCheckOutputName>
+			<DCC_ImageBase>00400000</DCC_ImageBase>
+			<DCC_Platform>x86</DCC_Platform>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_1)'!=''">
-			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
-			<DCC_DebugDCUs>true</DCC_DebugDCUs>
-			<DCC_Optimize>false</DCC_Optimize>
-			<DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
-			<DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
-			<DCC_RemoteDebug>true</DCC_RemoteDebug>
-		</PropertyGroup>
-		<PropertyGroup Condition="'$(Cfg_2)'!=''">
-			<DCC_AssertionsAtRuntime>false</DCC_AssertionsAtRuntime>
+			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
 			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
 			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
 			<DCC_DebugInformation>false</DCC_DebugInformation>
-			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
 		</PropertyGroup>
 		<ItemGroup>
 			<DelphiCompile Include="MsgHelperDemo.dpr">
 				<MainSource>MainSource</MainSource>
 			</DelphiCompile>
 			<DCCReference Include="frMain.pas">
-				<FormType>dfm</FormType>
 				<Form>frmMain</Form>
 			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
-			<BuildConfiguration Include="Debug">
+			<BuildConfiguration Include="Release">
 				<Key>Cfg_1</Key>
 				<CfgParent>Base</CfgParent>
 			</BuildConfiguration>
-			<BuildConfiguration Include="Release">
+			<BuildConfiguration Include="Debug">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>
 			</BuildConfiguration>
@@ -75,7 +58,7 @@
 		<Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
 		<ProjectExtensions>
 			<Borland.Personality>Delphi.Personality.12</Borland.Personality>
-			<Borland.ProjectType>Application</Borland.ProjectType>
+			<Borland.ProjectType>VCLApplication</Borland.ProjectType>
 			<BorlandProject>
 				<Delphi.Personality>
 					<Source>
@@ -87,7 +70,7 @@
 						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
 					</Parameters>
 					<VersionInfo>
-						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
 						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
 						<VersionInfo Name="MajorVer">1</VersionInfo>
 						<VersionInfo Name="MinorVer">0</VersionInfo>
@@ -98,8 +81,8 @@
 						<VersionInfo Name="Special">False</VersionInfo>
 						<VersionInfo Name="Private">False</VersionInfo>
 						<VersionInfo Name="DLL">False</VersionInfo>
-						<VersionInfo Name="Locale">1033</VersionInfo>
-						<VersionInfo Name="CodePage">1252</VersionInfo>
+						<VersionInfo Name="Locale">1049</VersionInfo>
+						<VersionInfo Name="CodePage">1251</VersionInfo>
 					</VersionInfo>
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName"/>
@@ -113,412 +96,7 @@
 						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
 						<VersionInfoKeys Name="Comments"/>
 					</VersionInfoKeys>
-					<Excluded_Packages>
-						<Excluded_Packages Name="\Bpl\JclRepositoryExpert140.bpl">JCL Package containing repository wizards</Excluded_Packages>
-					</Excluded_Packages>
-					<DebugEnvironmentVariables>
-						<DebugEnvironmentVariables Name="Config">&apos;Release&apos;</DebugEnvironmentVariables>
-					</DebugEnvironmentVariables>
-					<DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="ALLLIB">&apos;$(DELPHILIB);$(ELLIB);$(UNITSLIB);$(CMPNTSLIB);$(FSTREPLIB);$(PLATEXLIB)&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="ALLUSERSPROFILE">&apos;C:\ProgramData&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="APPDATA">&apos;C:\Users\Walker\AppData\Roaming&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="BDS">&apos;c:\program files\embarcadero\rad studio\7.0&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="BDSAppDataBaseDir">&apos;BDS&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="BDSCOMMONDIR">&apos;C:\Users\Public\Documents\RAD Studio\7.0&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="BDSPROJECTSDIR">&apos;C:\Users\Walker\Documents\RAD Studio\Projects&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="BDSUSERDIR">&apos;C:\Users\Walker\Documents\RAD Studio\7.0&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="CG_BOOST_ROOT">&apos;C:\Program Files\Embarcadero\RAD Studio\7.0\include\boost_1_39&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="CMPNTSLIB">&apos;$(COMPONENTS)\CustomComponents;$(COMPONENTS)\CustomComponents\ColorPB12;$(COMPONENTS)\CustomComponents\CoolTrayIcon;$(COMPONENTS)\CustomComponents\DBF;$(COMPONENTS)\CustomComponents\gpjtline;$(COMPONENTS)\CustomComponents\MS RichText;$(COMPONENTS)\CustomComponents\XML;$(COMPONENTS)\EhLIB;$(COMPONENTS)\NCOCI8;$(COMPONENTS)\RxLib\Units;$(COMPONENTS)\SyntaxEdit;$(COMPONENTS)\Virtual Treeview\Common;$(COMPONENTS)\Virtual Treeview\Source;$(COMPONENTS)\PBearHTMLViewer\source;$(COMPONENTS)\TNT\Source;$(COMPONENTS)\TNT\Design;$(COMPONENTS)\TBX\TBX;$(COMPONENTS)\TBX\TBX\TBXThemes;$(COMPONENTS)\TBX\TB2k\Source;$(COMPONENTS)\TBX\SpTBX\Source;$(COMPONENTS)\VCLZip&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="CommonProgramFiles">&apos;C:\Program Files\Common Files&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="COMPONENTS">&apos;$(THIRDPARTY)\Components&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="COMPUTERNAME">&apos;WALKER-PC&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="ComSpec">&apos;C:\Windows\system32\cmd.exe&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="DELPHI">&apos;c:\program files\embarcadero\rad studio\7.0&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="DELPHILIB">&apos;$(DELPHI)\Lib;$(DELPHI)\Bin;$(DELPHI)\Imports;$(DELPHI)\Projects\Bpl;$(DELPHI)\Source\Indy&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="EL">&apos;$(COMPONENTS)\EurekaLog 6&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="EL7">&apos;$(EL)\Delphi7&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="ELLIB">&apos;$(EL7)&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="FASTREPORTS">&apos;$(COMPONENTS)\FastReports&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="FP_NO_HOST_CHECK">&apos;NO&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="FSTREPLIB">&apos;$(FASTREPORTS)\FastReport 4\Source;$(FASTREPORTS)\FastReport 4\Source\ExportPack;$(FASTREPORTS)\FastReport 4\FastScript;$(FASTREPORTS)\FastReport 4\FastQB;$(FASTREPORTS)\FastCube\Source;$(FASTREPORTS)\FastCube\Source\Fr&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="HOMEDRIVE">&apos;C:&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="HOMEPATH">&apos;\Users\Walker&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="LIBRARIES">&apos;$(THIRDPARTY)\Libraries&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="LOCALAPPDATA">&apos;C:\Users\Walker\AppData\Local&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="LOGONSERVER">&apos;\\WALKER-PC&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="NUMBER_OF_PROCESSORS">&apos;2&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="OS">&apos;Windows_NT&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="Path">&apos;C:\Program Files\Embarcadero\Studio\15.0\bin;C:\Users\Public\Documents\Embarcadero\Studio\15.0\Bpl;C:\Program Files\CollabNet;C:\Program Files\Embarcadero\Studio\14.0\bin;C:\Users\Public\Documents\Embarcadero\Studio\14.0\Bpl;C:\Program Files\Embarcadero\Studio\14.0\bin64;C:\Users\Public\Documents\Embarcadero\Studio\14.0\Bpl\Win64;C:\Soft\Borland\Delphi7\Bin;C:\Soft\Borland\Delphi7\Projects\Bpl\;C:\Program Files\Embarcadero\RAD Studio\9.0\bin;C:\Users\Public\Documents\RAD Studio\9.0\Bpl;C:\Program Files\Embarcadero\RAD Studio\9.0\bin64;C:\Users\Public\Documents\RAD Studio\9.0\Bpl\Win64;C:\Program Files\Embarcadero\RAD Studio\7.0\bin;C:\Users\Public\Documents\RAD Studio\7.0\Bpl;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;c:\Soft\OracleInstantClient;C:\Soft\TortoiseHg\;C:\Soft\TortoiseSVN\bin;C:\Soft\OpenVPN\bin;C:\Program Files\Windows Live\Shared;C:\Program Files\Common Files\Tom Sawyer Software\8.0.0;C:\Soft\TortoiseGit\bin&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PATHEXT">&apos;.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PLATEXLIB">&apos;$(SRCROOT)\_InotechComponents\Components\arVirtualTreeView;$(SRCROOT)\_InotechComponents\Components\SizeCompsPms;$(SRCROOT)\Platex\swLIB;$(SRCROOT)\Platex\swLIB\AD;$(SRCROOT)\Platex\swLIB\swControls;$(SRCROOT)\Platex\swLIB\swControls\PropertyEditor;$(SRCROOT)\Platex\swLIB\swForms_Design&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="Platform">&apos;Win32&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PROCESSOR_ARCHITECTURE">&apos;x86&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PROCESSOR_IDENTIFIER">&apos;x86 Family 6 Model 23 Stepping 10, GenuineIntel&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PROCESSOR_LEVEL">&apos;6&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PROCESSOR_REVISION">&apos;170a&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="ProgramData">&apos;C:\ProgramData&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="ProgramFiles">&apos;C:\Program Files&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PSModulePath">&apos;C:\Windows\system32\WindowsPowerShell\v1.0\Modules\&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="PUBLIC">&apos;C:\Users\Public&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="SESSIONNAME">&apos;Console&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="SRCROOT">&apos;$(SVN)\Delphi&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="SVN">&apos;C:\Users\Walker\Inotech\SVN&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="SystemDrive">&apos;C:&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="SystemRoot">&apos;C:\Windows&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="TEMP">&apos;c:\Temp&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="THIRDPARTY">&apos;$(SRCROOT)\_Third party&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="TMP">&apos;c:\Temp&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="UNITSLIB">&apos;$(LIBRARIES)\FastMM;$(LIBRARIES)\FastCode;$(LIBRARIES)\VCLFix;$(LIBRARIES)\GDIPlus;$(LIBRARIES)\JCL\common;$(LIBRARIES)\JCL\include;$(LIBRARIES)\JCL\include\jedi;$(LIBRARIES)\JCL\vcl;$(LIBRARIES)\JCL\windows;$(LIBRARIES)\JCL\windows\obj\bzip2\win32;$(LIBRARIES)\JCL\windows\obj\pcre\win32;$(LIBRARIES)\JCL\windows\obj\zlib\win32;$(LIBRARIES)\QSTR;$(LIBRARIES)\RegExp2;$(LIBRARIES)\ZLIB&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="USERDOMAIN">&apos;Walker-PC&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="USERNAME">&apos;Walker&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="USERPROFILE">&apos;C:\Users\Walker&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="VBOX_INSTALL_PATH">&apos;c:\Soft\Oracle\VirtualBox\&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="windir">&apos;C:\Windows&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="windows_tracing_flags">&apos;3&apos;</DebugSysEnvironmentVariables>
-						<DebugSysEnvironmentVariables Name="windows_tracing_logfile">&apos;C:\BVTBin\Tests\installpackage\csilogfile.log&apos;</DebugSysEnvironmentVariables>
-					</DebugSysEnvironmentVariables>
 				</Delphi.Personality>
-				<Deployment>
-					<DeployFile Class="ProjectOutput" LocalName="Win32\Debug\MsgHelperDemo.exe" Configuration="Debug">
-						<Platform Name="Win32">
-							<RemoteName>MsgHelperDemo.exe</RemoteName>
-							<Overwrite>true</Overwrite>
-						</Platform>
-					</DeployFile>
-					<DeployClass Required="true" Name="DependencyPackage">
-						<Platform Name="iOSDevice">
-							<Operation>1</Operation>
-							<Extensions>.dylib</Extensions>
-						</Platform>
-						<Platform Name="Win32">
-							<Operation>0</Operation>
-							<Extensions>.bpl</Extensions>
-						</Platform>
-						<Platform Name="OSX32">
-							<RemoteDir>Contents\MacOS</RemoteDir>
-							<Operation>1</Operation>
-							<Extensions>.dylib</Extensions>
-						</Platform>
-						<Platform Name="iOSSimulator">
-							<Operation>1</Operation>
-							<Extensions>.dylib</Extensions>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="DependencyModule">
-						<Platform Name="iOSDevice">
-							<Operation>1</Operation>
-							<Extensions>.dylib</Extensions>
-						</Platform>
-						<Platform Name="Win32">
-							<Operation>0</Operation>
-							<Extensions>.dll;.bpl</Extensions>
-						</Platform>
-						<Platform Name="OSX32">
-							<RemoteDir>Contents\MacOS</RemoteDir>
-							<Operation>1</Operation>
-							<Extensions>.dylib</Extensions>
-						</Platform>
-						<Platform Name="iOSSimulator">
-							<Operation>1</Operation>
-							<Extensions>.dylib</Extensions>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="iPad_Launch2048">
-						<Platform Name="iOSDevice">
-							<Operation>1</Operation>
-						</Platform>
-						<Platform Name="iOSSimulator">
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="ProjectOSXInfoPList">
-						<Platform Name="OSX32">
-							<RemoteDir>Contents</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="ProjectiOSDeviceDebug">
-						<Platform Name="iOSDevice">
-							<RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="Android_SplashImage470">
-						<Platform Name="Android">
-							<RemoteDir>res\drawable-normal</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="AndroidLibnativeX86File">
-						<Platform Name="Android">
-							<RemoteDir>library\lib\x86</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="ProjectiOSResource">
-						<Platform Name="iOSDevice">
-							<Operation>1</Operation>
-						</Platform>
-						<Platform Name="iOSSimulator">
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="ProjectOSXEntitlements">
-						<Platform Name="OSX32">
-							<RemoteDir>Contents</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="AndroidGDBServer">
-						<Platform Name="Android">
-							<RemoteDir>library\lib\armeabi-v7a</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="iPhone_Launch640">
-						<Platform Name="iOSDevice">
-							<Operation>1</Operation>
-						</Platform>
-						<Platform Name="iOSSimulator">
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="Android_SplashImage960">
-						<Platform Name="Android">
-							<RemoteDir>res\drawable-xlarge</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="Android_LauncherIcon96">
-						<Platform Name="Android">
-							<RemoteDir>res\drawable-xhdpi</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="iPhone_Launch320">
-						<Platform Name="iOSDevice">
-							<Operation>1</Operation>
-						</Platform>
-						<Platform Name="iOSSimulator">
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="Android_LauncherIcon144">
-						<Platform Name="Android">
-							<RemoteDir>res\drawable-xxhdpi</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="AndroidLibnativeMipsFile">
-						<Platform Name="Android">
-							<RemoteDir>library\lib\mips</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="AndroidSplashImageDef">
-						<Platform Name="Android">
-							<RemoteDir>res\drawable</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="DebugSymbols">
-						<Platform Name="OSX32">
-							<RemoteDir>Contents\MacOS</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-						<Platform Name="iOSSimulator">
-							<Operation>1</Operation>
-						</Platform>
-						<Platform Name="Win32">
-							<Operation>0</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="DependencyFramework">
-						<Platform Name="OSX32">
-							<RemoteDir>Contents\MacOS</RemoteDir>
-							<Operation>1</Operation>
-							<Extensions>.framework</Extensions>
-						</Platform>
-						<Platform Name="Win32">
-							<Operation>0</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="Android_SplashImage426">
-						<Platform Name="Android">
-							<RemoteDir>res\drawable-small</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="ProjectiOSEntitlements">
-						<Platform Name="iOSDevice">
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="AdditionalDebugSymbols">
-						<Platform Name="OSX32">
-							<RemoteDir>Contents\MacOS</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-						<Platform Name="iOSSimulator">
-							<Operation>1</Operation>
-						</Platform>
-						<Platform Name="Win32">
-							<RemoteDir>Contents\MacOS</RemoteDir>
-							<Operation>0</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="AndroidClassesDexFile">
-						<Platform Name="Android">
-							<RemoteDir>classes</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="ProjectiOSInfoPList">
-						<Platform Name="iOSDevice">
-							<Operation>1</Operation>
-						</Platform>
-						<Platform Name="iOSSimulator">
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="iPad_Launch1024">
-						<Platform Name="iOSDevice">
-							<Operation>1</Operation>
-						</Platform>
-						<Platform Name="iOSSimulator">
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="Android_DefaultAppIcon">
-						<Platform Name="Android">
-							<RemoteDir>res\drawable</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="ProjectOSXResource">
-						<Platform Name="OSX32">
-							<RemoteDir>Contents\Resources</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="ProjectiOSDeviceResourceRules">
-						<Platform Name="iOSDevice">
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="iPad_Launch768">
-						<Platform Name="iOSDevice">
-							<Operation>1</Operation>
-						</Platform>
-						<Platform Name="iOSSimulator">
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Required="true" Name="ProjectOutput">
-						<Platform Name="iOSDevice">
-							<Operation>1</Operation>
-						</Platform>
-						<Platform Name="Android">
-							<RemoteDir>library\lib\armeabi-v7a</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-						<Platform Name="Win32">
-							<Operation>0</Operation>
-						</Platform>
-						<Platform Name="OSX32">
-							<RemoteDir>Contents\MacOS</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-						<Platform Name="iOSSimulator">
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="AndroidLibnativeArmeabiFile">
-						<Platform Name="Android">
-							<RemoteDir>library\lib\armeabi</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="Android_SplashImage640">
-						<Platform Name="Android">
-							<RemoteDir>res\drawable-large</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="File">
-						<Platform Name="iOSDevice">
-							<Operation>0</Operation>
-						</Platform>
-						<Platform Name="Android">
-							<Operation>0</Operation>
-						</Platform>
-						<Platform Name="Win32">
-							<Operation>0</Operation>
-						</Platform>
-						<Platform Name="OSX32">
-							<RemoteDir>Contents\MacOS</RemoteDir>
-							<Operation>0</Operation>
-						</Platform>
-						<Platform Name="iOSSimulator">
-							<Operation>0</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="iPhone_Launch640x1136">
-						<Platform Name="iOSDevice">
-							<Operation>1</Operation>
-						</Platform>
-						<Platform Name="iOSSimulator">
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="Android_LauncherIcon36">
-						<Platform Name="Android">
-							<RemoteDir>res\drawable-ldpi</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="AndroidSplashStyles">
-						<Platform Name="Android">
-							<RemoteDir>res\values</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="iPad_Launch1536">
-						<Platform Name="iOSDevice">
-							<Operation>1</Operation>
-						</Platform>
-						<Platform Name="iOSSimulator">
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="Android_LauncherIcon48">
-						<Platform Name="Android">
-							<RemoteDir>res\drawable-mdpi</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="Android_LauncherIcon72">
-						<Platform Name="Android">
-							<RemoteDir>res\drawable-hdpi</RemoteDir>
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<DeployClass Name="ProjectAndroidManifest">
-						<Platform Name="Android">
-							<Operation>1</Operation>
-						</Platform>
-					</DeployClass>
-					<ProjectRoot Name="$(PROJECTNAME)" Platform="Android"/>
-					<ProjectRoot Name="$(PROJECTNAME).app" Platform="iOSDevice"/>
-					<ProjectRoot Name="$(PROJECTNAME)" Platform="Win32"/>
-					<ProjectRoot Name="$(PROJECTNAME).app" Platform="OSX32"/>
-					<ProjectRoot Name="$(PROJECTNAME).app" Platform="iOSSimulator"/>
-					<ProjectRoot Name="$(PROJECTNAME)" Platform="Win64"/>
-				</Deployment>
-				<Platforms>
-					<Platform value="Win32">True</Platform>
-				</Platforms>
 			</BorlandProject>
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>
