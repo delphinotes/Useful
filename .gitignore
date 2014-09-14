@@ -8,3 +8,8 @@ __history
 *.exe
 *.dll
 bin/*
+*.cbk
+*.dsk
+*.cfg
+*.dof
+*.bak
