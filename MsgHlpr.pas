@@ -702,6 +702,8 @@ end;
 function TMessageHelper.ToString: string;
 begin
   case Msg of
+    WM_ENABLE:
+      Result := BoolToStr(TWMEnable(Self).Enabled, True);
     WM_SYSCOMMAND:
       Result := DescribeSyscommand(TWMSysCommand(Self));
     WM_ACTIVATEAPP:
