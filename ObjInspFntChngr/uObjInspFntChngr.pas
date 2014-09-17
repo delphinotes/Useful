@@ -7,13 +7,13 @@ procedure Register;
 implementation
 
 uses
-  Windows, Classes, SysUtils,
-  VCL.Graphics, VCL.Controls, VCL.Forms;
+  SysUtils, Graphics, Forms;
 
 var
   FSavedFont: TFont;
 
 const
+  PreferParentFont = True;
   PreferFontName = 'Tahoma';
   PreferFontSize = 8;
 
@@ -40,8 +40,12 @@ begin
     FSavedFont := TFont.Create;
     FSavedFont.Assign(F.Font);
 
-    F.Font.Name := PreferFontName;
-    F.Font.Size := PreferFontSize;
+    if not PreferParentFont then
+    begin
+      F.Font.Name := PreferFontName;
+      F.Font.Size := PreferFontSize;
+    end else
+      TForm(F).ParentFont := True;
   end;
 end;
 
@@ -60,7 +64,9 @@ begin
 end;
 
 initialization
+  FSavedFont := nil;
 
 finalization
   Unregister;
+
 end.
