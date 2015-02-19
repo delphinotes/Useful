@@ -12,6 +12,9 @@ uses
 type
   TCMDHighlighter = class(TNotifierObject, IOTAWizard, IOTAHighlighter, IOTAHighlighterPreview)
   const
+    SIDString = 'DelphiNotes.Highlighter.CMD';
+    SName = 'CMD/BAT Highlighter';
+    SDisplayName = 'CMD/BAT';
     atLabelDeclaration = ToolsApi.atPreproc;
     atA = ToolsApi.atPreproc;
     atLabel = ToolsApi.atIdentifier;
@@ -19,14 +22,13 @@ type
     atRem = ToolsApi.atComment;
     atCommand = ToolsApi.atIdentifier;
     atVar = ToolsApi.atString;
-
-    KeyWords1 = 'rem set if else exist errorlevel for in do break call copy chcp cd chdir choice cls country ctty date ' +
-      'del erase dir echo exit goto loadfix loadhigh mkdir md move path pause prompt rename ren rmdir rd shift time ' +
-      'type ver verify vol com con lpt nul defined not errorlevel cmdextversion';
-    KeyWords2 = 'setlocal endlocal eql neq lss leq gtr geq';
   class var
     FKeyWords: TStringList;
   public
+    class constructor Create;
+    class destructor Destroy;
+    constructor Create;
+
     // IOTAWizard
     function GetIDString: string;
     function GetName: string;
@@ -51,11 +53,6 @@ type
     function GetBlockStartCol: Integer;
     function GetBlockEndLine: Integer;
     function GetBlockEndCol: Integer;
-
-    //
-    constructor Create;
-    class constructor Create;
-    class destructor Destroy;
   end;
 
 procedure Register;
@@ -63,7 +60,32 @@ begin
   RegisterPackageWizard(TCMDHighlighter.Create);
 end;
 
+procedure LoadStringsFromResource(Strings: TStrings; const ResName: string);
+var
+  Stream: TStream;
+begin
+  Stream := TResourceStream.Create(HInstance, ResName, RT_RCDATA);
+  try
+    Strings.LoadFromStream(Stream);
+  finally
+    Stream.Free;
+  end;
+end;
+
 { TCMDHighlighter }
+
+class constructor TCMDHighlighter.Create;
+begin
+  FKeyWords := TStringList.Create;
+  FKeyWords.CaseSensitive := True;
+  FKeyWords.Sorted := True;
+  LoadStringsFromResource(FKeyWords, 'KEYWORDS_TXT');
+end;
+
+class destructor TCMDHighlighter.Destroy;
+begin
+  FreeAndNil(FKeyWords);
+end;
 
 constructor TCMDHighlighter.Create;
 begin
@@ -71,18 +93,14 @@ begin
   (BorlandIDEServices as IOTAHighlightServices).AddHighlighter(Self);
 end;
 
-procedure TCMDHighlighter.Execute;
-begin
-end;
-
 function TCMDHighlighter.GetIDString: string;
 begin
-  Result := 'DelphiNotes.Highlighter.CMD';
+  Result := SIDString;
 end;
 
 function TCMDHighlighter.GetName: string;
 begin
-  Result := 'CMD/BAT Highlighter';
+  Result := SName;
 end;
 
 function TCMDHighlighter.GetState: TWizardState;
@@ -90,17 +108,8 @@ begin
   Result := [wsEnabled];
 end;
 
-class constructor TCMDHighlighter.Create;
+procedure TCMDHighlighter.Execute;
 begin
-  FKeyWords := TStringList.Create;
-  FKeyWords.Delimiter := ' ';
-  FKeyWords.DelimitedText := UpperCase(KeyWords1) + ' ' + UpperCase(KeyWords2);
-  FKeyWords.Sorted := True;
-end;
-
-class destructor TCMDHighlighter.Destroy;
-begin
-  FreeAndNil(FKeyWords);
 end;
 
 procedure TCMDHighlighter.Tokenize(StartClass: TOTALineClass; LineBuf: POTAEdChar; LineBufLen: TOTALineSize;
@@ -120,9 +129,7 @@ var
     for Result := Start to Stop do
       if CharInSet(LineBuf[Result], CharSet) then
         Exit;
-    if CharInSet(#0, CharSet) then
-      //Inc(Result)
-    else
+    if not CharInSet(#0, CharSet) then
       Result := -1;
   end;
 
@@ -226,8 +233,8 @@ begin
 
     if l > 0 then
     begin
-      LastWord := UpperCase(LastWord);
-      if LastWord = 'REM' then
+      LastWord := LowerCase(LastWord);
+      if LastWord = 'rem' then
       begin
         // start comment from here to the end of line
         Mark(Idx, LineBufLen - Idx, atRem);
@@ -256,22 +263,16 @@ end;
 
 function TCMDHighlighter.GetDisplayName: string;
 begin
-  Result := 'CMD/BAT';
+  Result := SDisplayName;
 end;
 
 function TCMDHighlighter.GetSampleText: string;
 var
   Strings: TStrings;
-  Stream: TStream;
 begin
   Strings := TStringList.Create;
   try
-    Stream := TResourceStream.Create(HInstance, 'SAMPLE_CMD', RT_RCDATA);
-    try
-      Strings.LoadFromStream(Stream);
-    finally
-      Stream.Free;
-    end;
+    LoadStringsFromResource(Strings, 'SAMPLE_CMD');
     Result := Strings.Text;
   finally
     Strings.Free;
