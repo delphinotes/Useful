@@ -13,3 +13,6 @@ bin/*
 *.cfg
 *.dof
 *.bak
+/CMDHighlighter/CMDHighlighter.dres
+/CMDHighlighter/CMDHighlighter.res
+/CMDHighlighter/CMDHighlighterResource.rc
