@@ -10,10 +10,7 @@ __history
 bin/*
 *.cbk
 *.dsk
+*.~dsk
 *.cfg
 *.dof
 *.bak
-/CMDHighlighter/CMDHighlighter.dres
-/CMDHighlighter/CMDHighlighter.res
-/CMDHighlighter/CMDHighlighterResource.rc
-/CMDHighlighter/*.~dsk
