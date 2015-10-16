@@ -37,7 +37,7 @@
     <PropertyGroup Condition="'$(Base)'!=''">
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <DesignOnlyPackage>true</DesignOnlyPackage>
-        <DCC_Description>DelphiNotes.Highlighter.CMD</DCC_Description>
+        <DCC_Description>delphinotes.ru - CMD/BAT Highlighter</DCC_Description>
         <DllSuffix>210</DllSuffix>
         <VerInfo_Locale>1049</VerInfo_Locale>
         <SanitizedProjectName>CMDHighlighter</SanitizedProjectName>
@@ -117,6 +117,7 @@
                 </Source>
                 <Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k210.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp210.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment>

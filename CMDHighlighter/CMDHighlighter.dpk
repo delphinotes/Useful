@@ -26,7 +26,7 @@ package CMDHighlighter;
 {$IMAGEBASE $400000}
 {$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'DelphiNotes.Highlighter.CMD'}
+{$DESCRIPTION 'delphinotes.ru - CMD/BAT Highlighter'}
 {$LIBSUFFIX '210'}
 {$DESIGNONLY}
 {$IMPLICITBUILD ON}
